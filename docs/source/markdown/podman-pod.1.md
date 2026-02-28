@@ -19,6 +19,7 @@ podman pod is a set of subcommands that manage pods, or groups of containers.
 | inspect | [podman-pod-inspect(1)](podman-pod-inspect.1.md)  | Display information describing a pod.                                             |
 | kill    | [podman-pod-kill(1)](podman-pod-kill.1.md)        | Kill the main process of each container in one or more pods.                      |
 | logs    | [podman-pod-logs(1)](podman-pod-logs.1.md)        | Display logs for pod with one or more containers.                                 |
+| list    | [podman-pod-ps(1)](podman-pod-ps.1.md)            | Print out information about pods.                                                 |
 | pause   | [podman-pod-pause(1)](podman-pod-pause.1.md)      | Pause one or more pods.                                                           |
 | prune   | [podman-pod-prune(1)](podman-pod-prune.1.md)      | Remove all stopped pods and their containers.                                     |
 | ps      | [podman-pod-ps(1)](podman-pod-ps.1.md)            | Print out information about pods.                                                 |
@@ -34,4 +35,5 @@ podman pod is a set of subcommands that manage pods, or groups of containers.
 **[podman(1)](podman.1.md)**
 
 ## HISTORY
+February 2026, Added List command by Tom Sweeney <tsweeney@redhat.com>
 July 2018, Originally compiled by Peter Hunt <pehunt@redhat.com>
