@@ -42,4 +42,8 @@ For Linux, we test the latest versions of Fedora and Debian.
 
 Operating systems and hardware outside our automated testing is considered "best effort".
 In many cases, we are unable to test, triage, and develop for combinations outside what
-our automated testing covers. For example, Podman on Intel-based Macs.
+our automated testing covers.
+
+As of Podman 6, we no longer support Windows 10 nor Intel Macs.  While no code was removed
+to drop support of Windows 10, code for Intel Macs was removed and will no longer compile
+for that platform.
