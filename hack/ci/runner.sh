@@ -74,13 +74,13 @@ fi
 sudo tee $conf <<EOF
 [storage]
 driver = "$STORAGE_FS"
+graphroot = "/var/lib/containers/storage"
+runroot = "/run/containers/storage"
 EOF
 
-if [[ -n "$CI_DESIRED_COMPOSEFS" ]]; then
-    # composefs only works as root so we must set it in the rootful config
-    sudo mkdir /etc/containers/storage.rootful.conf.d/
-    conf=/etc/containers/storage.rootful.conf.d/99-composefs.conf
-    sudo tee $conf <<EOF
+if [[ -n "$CI_DESIRED_COMPOSEFS" && "$PRIV" == "root" ]]; then
+    # Append composefs options
+    sudo tee --append $conf <<EOF
 
 # BEGIN CI-enabled composefs
 [storage.options]
@@ -96,9 +96,7 @@ EOF
     # but we're hijacking it to pass an extra option+arg. And it
     # actually works.
     # This is needed for the e2e tests as they do not use the config file.
-    if [[ "$PRIV" == "root" ]]; then
-        export STORAGE_OPTIONS_OVERLAY='overlay.use_composefs=true --pull-option=enable_partial_images=true --pull-option=convert_images=true'
-    fi
+    export STORAGE_OPTIONS_OVERLAY='overlay.use_composefs=true --pull-option=enable_partial_images=true --pull-option=convert_images=true'
 fi
 
 
