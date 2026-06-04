@@ -129,6 +129,11 @@ if [[ "$TEST" != build && "$TEST" != unit ]]; then
     sudo make install PREFIX=/usr ETCDIR=/etc
 fi
 
+# Delete netavark v2, we build a custom version into the images but podman 5.8
+# is not designed to run with it. Delete it here so that we fall back to the
+# older rpm one in /usr/libexec/podman/netavark.
+sudo rm -f /usr/local/libexec/podman/netavark
+
 # Setup git user, bud tests need this.
 $SUDO git config --global user.name "Podman CI"
 $SUDO git config --global user.email "no-reply@podman.io"
